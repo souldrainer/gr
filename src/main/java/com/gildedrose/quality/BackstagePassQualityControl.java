@@ -34,14 +34,14 @@ public class BackstagePassQualityControl implements QualityControl {
     }
 
     private boolean concertIsInFiveOrLessDays(Item backstagePass) {
-        return backstagePass.getSellIn() >= 0 && backstagePass.getSellIn() <= FIVE_DAYS;
+        return backstagePass.getSellIn() >= 0 && backstagePass.getSellIn() < FIVE_DAYS;
     }
 
     private boolean concertIsWithinSixAndTenDays(Item backstagePass) {
-        return backstagePass.getSellIn() > FIVE_DAYS && backstagePass.getSellIn() <= TEN_DAYS;
+        return backstagePass.getSellIn() >= FIVE_DAYS && backstagePass.getSellIn() < TEN_DAYS;
     }
 
     private boolean concertIsMoreThenTenDays(Item backstagePass) {
-        return backstagePass.getSellIn() > TEN_DAYS;
+        return backstagePass.getSellIn() >= TEN_DAYS;
     }
 }

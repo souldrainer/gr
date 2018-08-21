@@ -33,7 +33,7 @@ public class BackstagePassQualityControlTest extends CalculationTest {
         backstagePass.setSellIn(TEN_DAYS);
         backstagePass.setQuality(10);
         backstagePassQualityControl.updateQualityFor(backstagePass);
-        assertThat(backstagePass.getQuality(), is(12));
+        assertThat(backstagePass.getQuality(), is(11));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class BackstagePassQualityControlTest extends CalculationTest {
         backstagePass.setSellIn(FIVE_DAYS);
         backstagePass.setQuality(10);
         backstagePassQualityControl.updateQualityFor(backstagePass);
-        assertThat(backstagePass.getQuality(), is(13));
+        assertThat(backstagePass.getQuality(), is(12));
     }
 
     @Test

@@ -42,10 +42,10 @@ public class GoldenTest {
         QualityControlFactory qualityControlFactory = new QualityControlFactory();
         GildedRose app = new GildedRose(qualityControlFactory, sellInControl);
         for (int i = 0; i < 32; i++) {
-            builder.append(format("------------------------- day %s --------------------------%n", i));
-            builder.append(format("%42s %6s %s%n", "NAME", "SELLIN", "QUALITY"));
+            builder.append(format("-------- day %s --------%n", i));
+            builder.append(format("%s, %s, %s%n", "name", "sellIn", "quality"));
             for (Item item : items) {
-                builder.append(format("%42s %6s %s%n", item.getName(), item.getSellIn(), item.getQuality()));
+                builder.append(format("%s, %s, %s%n", item.getName(), item.getSellIn(), item.getQuality()));
             }
             builder.append(format("%n"));
             app.updateQuality(items);
