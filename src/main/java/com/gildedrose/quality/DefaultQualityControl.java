@@ -11,7 +11,6 @@ public class DefaultQualityControl implements QualityControl {
 
     private int qualityDropFor(Item item) {
         int defaultQualityDrop = defaultQualityDropFor(item);
-
         return item.getQuality() - defaultQualityDrop >= 0
                 ? defaultQualityDrop
                 : item.getQuality();

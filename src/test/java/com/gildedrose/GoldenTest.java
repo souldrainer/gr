@@ -1,8 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.factory.QualityControlFactory;
 import com.gildedrose.model.Item;
-import com.gildedrose.quality.QualityControlFactory;
-import com.gildedrose.sell.SellInControl;
+import com.gildedrose.service.GildedRoseService;
+import com.gildedrose.service.SellInControlService;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,9 +39,9 @@ public class GoldenTest {
         );
 
         StringBuilder builder = new StringBuilder();
-        SellInControl sellInControl = new SellInControl();
+        SellInControlService sellInControlService = new SellInControlService();
         QualityControlFactory qualityControlFactory = new QualityControlFactory();
-        GildedRose app = new GildedRose(qualityControlFactory, sellInControl);
+        GildedRoseService app = new GildedRoseService(qualityControlFactory, sellInControlService);
         for (int i = 0; i < 32; i++) {
             builder.append(format("-------- day %s --------%n", i));
             builder.append(format("%s, %s, %s%n", "name", "sellIn", "quality"));

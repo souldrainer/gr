@@ -23,25 +23,25 @@ public class BackstagePassQualityControl implements QualityControl {
     }
 
     private int extraQualityFor(Item backstagePass) {
-        if (concertIsMoreThenTenDays(backstagePass)) {
+        if (concertIsThenTenDaysOrMore(backstagePass)) {
             return DEFAULT_QUALITY_INCREASE;
-        } else if (concertIsWithinSixAndTenDays(backstagePass)) {
+        } else if (concertIsLessThenTenAndMoreOrEqualToFiveDays(backstagePass)) {
             return DEFAULT_QUALITY_INCREASE + EXTRA_QUALITY_INCREASE;
-        } else if (concertIsInFiveOrLessDays(backstagePass)) {
+        } else if (concertIsLessThenFiveDays(backstagePass)) {
             return DEFAULT_QUALITY_INCREASE + DOUBLE_EXTRA_QUALITY_INCREASE;
         }
         return NO_EXTRA_QUALITY_INCREASE;
     }
 
-    private boolean concertIsInFiveOrLessDays(Item backstagePass) {
+    private boolean concertIsLessThenFiveDays(Item backstagePass) {
         return backstagePass.getSellIn() >= 0 && backstagePass.getSellIn() < FIVE_DAYS;
     }
 
-    private boolean concertIsWithinSixAndTenDays(Item backstagePass) {
+    private boolean concertIsLessThenTenAndMoreOrEqualToFiveDays(Item backstagePass) {
         return backstagePass.getSellIn() >= FIVE_DAYS && backstagePass.getSellIn() < TEN_DAYS;
     }
 
-    private boolean concertIsMoreThenTenDays(Item backstagePass) {
+    private boolean concertIsThenTenDaysOrMore(Item backstagePass) {
         return backstagePass.getSellIn() >= TEN_DAYS;
     }
 }

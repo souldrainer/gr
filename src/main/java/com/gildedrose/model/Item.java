@@ -9,6 +9,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.util.UUID;
 
+import static java.lang.String.format;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,6 +27,6 @@ public class Item {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+        return format("Item{%s, %s, %s, %s}", this.id, this.name, this.sellIn, this.quality);
     }
 }

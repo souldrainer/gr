@@ -1,15 +1,21 @@
 package com.gildedrose.quality;
 
+import com.gildedrose.factory.QualityControlFactory;
 import com.gildedrose.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.quality.QualityControlFactory.CONJURED_ITEM_NAME;
+import static com.gildedrose.factory.QualityControlFactory.CONJURED_ITEM_NAME;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class ConjuredQualityControlTest extends CalculationTest {
+public class ConjuredQualityControlTest {
+
+    static final int TWENTY_DAYS = 20;
+    static final int ZERO_DAYS = 0;
+
+    private QualityControlFactory qualityControlFactory = new QualityControlFactory();
     private ConjuredQualityControl conjuredQualityControl;
     private Item conjured;
 

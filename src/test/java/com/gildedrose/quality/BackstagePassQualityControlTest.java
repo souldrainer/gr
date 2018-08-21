@@ -1,15 +1,22 @@
 package com.gildedrose.quality;
 
+import com.gildedrose.factory.QualityControlFactory;
 import com.gildedrose.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.quality.QualityControlFactory.BACKSTAGE_PASS_ITEM_NAME;
+import static com.gildedrose.factory.QualityControlFactory.BACKSTAGE_PASS_ITEM_NAME;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class BackstagePassQualityControlTest extends CalculationTest {
+public class BackstagePassQualityControlTest {
+
+    static final int TWENTY_DAYS = 20;
+    static final int TEN_DAYS = 10;
+    static final int FIVE_DAYS = 5;
+    static final int LESS_THEN_ZERO_DAYS = -1;
+    static QualityControlFactory qualityControlFactory = new QualityControlFactory();
 
     private BackstagePassQualityControl backstagePassQualityControl;
     private Item backstagePass;

@@ -1,16 +1,18 @@
 package com.gildedrose.quality;
 
+import com.gildedrose.factory.QualityControlFactory;
 import com.gildedrose.model.Item;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.gildedrose.quality.QualityControlFactory.SULFURAS_ITEM_NAME;
+import static com.gildedrose.factory.QualityControlFactory.SULFURAS_ITEM_NAME;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class SulfurasQualityControlTest extends CalculationTest {
+public class SulfurasQualityControlTest {
 
+    private QualityControlFactory qualityControlFactory = new QualityControlFactory();
     private QualityControl sulfurasQualityControl;
 
     @Before

@@ -4,3 +4,8 @@ elasticsearch:
   port: 9300
   cluster:
     name: elasticsearch
+
+async:
+  corePoolSize: 3
+  maxPoolSize: 3
+  queueCapacity: 100
