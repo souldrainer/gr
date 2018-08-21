@@ -9,3 +9,6 @@ async:
   corePoolSize: 3
   maxPoolSize: 3
   queueCapacity: 100
+
+scheduler:
+  cron: 0 0 12 ? * *

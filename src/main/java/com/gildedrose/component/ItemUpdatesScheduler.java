@@ -29,7 +29,7 @@ public class ItemUpdatesScheduler {
         this.gildedRoseService = gildedRoseService;
     }
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(cron = "${scheduler.cron}")
     public void scheduleItemsUpdateTask() {
         LOGGER.info("Starting items update task");
         List<Item> itemList = itemsSearchService.findAll();
