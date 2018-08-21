@@ -12,11 +12,12 @@ import static org.junit.Assert.assertThat;
 
 public class BackstagePassQualityControlTest {
 
-    static final int TWENTY_DAYS = 20;
-    static final int TEN_DAYS = 10;
-    static final int FIVE_DAYS = 5;
-    static final int LESS_THEN_ZERO_DAYS = -1;
-    static QualityControlFactory qualityControlFactory = new QualityControlFactory();
+    private static final int TWENTY = 20;
+    private static final int NINE = 9;
+    private static final int FIVE = 5;
+    private static final int FOUR = 4;
+    private static final int LESS_THEN_ZERO = -1;
+    private static QualityControlFactory qualityControlFactory = new QualityControlFactory();
 
     private BackstagePassQualityControl backstagePassQualityControl;
     private Item backstagePass;
@@ -29,31 +30,31 @@ public class BackstagePassQualityControlTest {
 
     @Test
     public void testOrdinaryConcertQualityIncrease() {
-        backstagePass.setSellIn(TWENTY_DAYS);
+        backstagePass.setSellIn(TWENTY);
         backstagePass.setQuality(10);
         backstagePassQualityControl.updateQualityFor(backstagePass);
         assertThat(backstagePass.getQuality(), is(11));
     }
 
     @Test
-    public void testTenDaysBeforeConcertIncrease() {
-        backstagePass.setSellIn(TEN_DAYS);
-        backstagePass.setQuality(10);
-        backstagePassQualityControl.updateQualityFor(backstagePass);
-        assertThat(backstagePass.getQuality(), is(11));
-    }
-
-    @Test
-    public void testFiveDaysBeforeConcertIncrease() {
-        backstagePass.setSellIn(FIVE_DAYS);
+    public void testLessThenTenDaysBeforeConcertIncrease() {
+        backstagePass.setSellIn(NINE);
         backstagePass.setQuality(10);
         backstagePassQualityControl.updateQualityFor(backstagePass);
         assertThat(backstagePass.getQuality(), is(12));
     }
 
     @Test
+    public void testLessThenFiveDaysBeforeConcertIncrease() {
+        backstagePass.setSellIn(FOUR);
+        backstagePass.setQuality(10);
+        backstagePassQualityControl.updateQualityFor(backstagePass);
+        assertThat(backstagePass.getQuality(), is(13));
+    }
+
+    @Test
     public void testAfterConcertQuality() {
-        backstagePass.setSellIn(LESS_THEN_ZERO_DAYS);
+        backstagePass.setSellIn(LESS_THEN_ZERO);
         backstagePass.setQuality(10);
         backstagePassQualityControl.updateQualityFor(backstagePass);
         assertThat(backstagePass.getQuality(), is(0));
@@ -61,7 +62,7 @@ public class BackstagePassQualityControlTest {
 
     @Test
     public void testMaxConcertQuality() {
-        backstagePass.setSellIn(FIVE_DAYS);
+        backstagePass.setSellIn(FIVE);
         backstagePass.setQuality(50);
         backstagePassQualityControl.updateQualityFor(backstagePass);
         assertThat(backstagePass.getQuality(), is(50));

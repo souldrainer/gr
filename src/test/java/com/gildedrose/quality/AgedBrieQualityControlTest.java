@@ -12,9 +12,11 @@ import static org.junit.Assert.assertThat;
 
 public class AgedBrieQualityControlTest {
 
-    static final int FIFTY_DAYS = 50;
-    static final int TEN_DAYS = 10;
-    static QualityControlFactory qualityControlFactory = new QualityControlFactory();
+    private static final int FIFTY = 50;
+    private static final int TEN = 10;
+    private static final int ZERO = 0;
+    private static final int MINUS_ONE = -1;
+    private static QualityControlFactory qualityControlFactory = new QualityControlFactory();
 
     private AgedBrieQualityControl agedBrieQualityControl;
     private Item agedBrie;
@@ -27,16 +29,26 @@ public class AgedBrieQualityControlTest {
 
     @Test
     public void testOrdinaryAgedBrieQualityIncrease() {
-        agedBrie.setQuality(TEN_DAYS);
+        agedBrie.setSellIn(ZERO);
+        agedBrie.setQuality(TEN);
         agedBrieQualityControl.updateQualityFor(agedBrie);
         assertThat(agedBrie.getQuality(), is(11));
     }
 
     @Test
     public void testAgedBrieMaxQuality() {
-        agedBrie.setQuality(FIFTY_DAYS);
+        agedBrie.setSellIn(MINUS_ONE);
+        agedBrie.setQuality(FIFTY);
         agedBrieQualityControl.updateQualityFor(agedBrie);
         assertThat(agedBrie.getQuality(), is(50));
+    }
+
+    @Test
+    public void testAgedBrieDoubleQuality() {
+        agedBrie.setSellIn(MINUS_ONE);
+        agedBrie.setQuality(TEN);
+        agedBrieQualityControl.updateQualityFor(agedBrie);
+        assertThat(agedBrie.getQuality(), is(12));
     }
 
     @Test

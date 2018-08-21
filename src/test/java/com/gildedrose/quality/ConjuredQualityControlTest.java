@@ -12,8 +12,9 @@ import static org.junit.Assert.assertThat;
 
 public class ConjuredQualityControlTest {
 
-    static final int TWENTY_DAYS = 20;
-    static final int ZERO_DAYS = 0;
+    static final int TWENTY = 20;
+    static final int TEN = 10;
+    static final int ZERO = 0;
 
     private QualityControlFactory qualityControlFactory = new QualityControlFactory();
     private ConjuredQualityControl conjuredQualityControl;
@@ -27,16 +28,16 @@ public class ConjuredQualityControlTest {
 
     @Test
     public void testOrdinaryConjuredItemDecrease() {
-        conjured.setQuality(TWENTY_DAYS);
-        conjured.setSellIn(10);
+        conjured.setQuality(TWENTY);
+        conjured.setSellIn(TEN);
         conjuredQualityControl.updateQualityFor(conjured);
         assertThat(conjured.getQuality(), is(18));
     }
 
     @Test
     public void testMinConjuredQuality() {
-        conjured.setQuality(ZERO_DAYS);
-        conjured.setSellIn(10);
+        conjured.setQuality(ZERO);
+        conjured.setSellIn(TEN);
         conjuredQualityControl.updateQualityFor(conjured);
         assertThat(conjured.getQuality(), is(0));
     }
